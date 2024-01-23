@@ -1,12 +1,9 @@
-package com.gamergeo.lib.gamlib.gui.mapper;
+package com.gamergeo.lib.gamlib.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gamergeo.lib.gamlib.gui.viewmodel.ViewModel;
-import com.gamergeo.lib.gamlib.model.Model;
-
-public abstract class AbstractMapper<M extends Model, V extends ViewModel> implements Mapper<M, V> {
+public abstract class AbstractMVMMapper<M extends MappedModel, V extends MappedViewModel> implements MVMMapper<M, V> {
 	
 	public List<V> getViewModels(List<M> models) {
     	List<V> viewModels =  new ArrayList<V>();
