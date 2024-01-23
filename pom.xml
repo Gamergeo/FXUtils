@@ -3,7 +3,7 @@
 
 	<groupId>com.gamergeo.lib</groupId>
 	<artifactId>gamlib</artifactId>
-	<version>0.1.3</version>
+	<version>0.1.4</version>
 	<packaging>pom</packaging>
 	
 	<modules>
