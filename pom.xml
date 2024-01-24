@@ -3,7 +3,7 @@
 
 	<groupId>com.gamergeo.lib</groupId>
 	<artifactId>gamlib</artifactId>
-	<version>0.2.1</version>
+	<version>0.2.2</version>
 	<packaging>jar</packaging>
 	
 	<parent>
@@ -60,6 +60,6 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter</artifactId>
 		    <scope>provided</scope>
-		</dependency>		
+		</dependency>	
 	</dependencies>
 </project>
