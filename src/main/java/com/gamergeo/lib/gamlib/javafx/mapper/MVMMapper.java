@@ -1,4 +1,4 @@
-package com.gamergeo.lib.gamlib.mapper;
+package com.gamergeo.lib.gamlib.javafx.mapper;
 
 import java.util.List;
 
