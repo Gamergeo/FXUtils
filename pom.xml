@@ -3,7 +3,7 @@
 
 	<groupId>com.gamergeo.lib</groupId>
 	<artifactId>gamlib</artifactId>
-	<version>0.2.2</version>
+	<version>0.3.1</version>
 	<packaging>jar</packaging>
 	
 	<parent>
@@ -39,8 +39,6 @@
 	</dependencyManagement>
 	
 	<dependencies>
-		
-		
 		<dependency>
 		    <groupId>org.openjfx</groupId>
 		    <artifactId>javafx-graphics</artifactId>
@@ -60,6 +58,10 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter</artifactId>
 		    <scope>provided</scope>
-		</dependency>	
+		</dependency>
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		</dependency>
 	</dependencies>
 </project>

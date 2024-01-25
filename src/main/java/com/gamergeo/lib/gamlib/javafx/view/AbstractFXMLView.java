@@ -4,52 +4,81 @@ import java.io.IOException;
 import java.net.URL;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.context.ApplicationContext;
 
 import com.gamergeo.lib.gamlib.javafx.controller.FXMLController;
-import com.gamergeo.lib.gamlib.javafx.loader.ApplicationLoader;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import lombok.extern.slf4j.Slf4j;
 
-public abstract class AbstractFXMLView implements FXMLView {
+@Slf4j
+public abstract class AbstractFXMLView {
 	
 	@Autowired
-	ApplicationLoader applicationLoader;
-	
-	@Autowired
-	ResourceLoader resourceLoader;
+	ApplicationContext applicationContext;
 	
 	FXMLController controller;
 	
 	Node root;
-
-	@Override
-	public URL getURL() throws IOException {
-		return getResource().getURL();
+	
+	private final URL resource;
+	
+	/**
+	 * Load FXML File
+	 */
+	public AbstractFXMLView load() {
+		log.info("Load FXML View: " + this.getClass());
+        FXMLLoader loader = new FXMLLoader(resource);
+        loader.setControllerFactory(applicationContext::getBean);
+		try {
+	        setRoot(loader.load());
+		} catch (IOException e) {
+			log.error("Error FXML View not found: " + getClass());
+			throw new RuntimeException(e);
+		}
+        
+        setController(loader.getController());
+        
+        return this;
 	}
-
-	@Override
-	public Resource getResource() {
-		return resourceLoader.getResource("classpath:" + getClasspath());
+	
+	/**
+	 * Instantiates a new abstract fxml view.
+	 */
+	public AbstractFXMLView() {
+		final Class<? extends AbstractFXMLView> theClass = this.getClass();
+		
+		// On récupère la valeur de l'annotation, soit view soit component
+		FXMLView annotationView = theClass.getAnnotation(FXMLView.class);
+		FXMLComponent annotationComponent = theClass.getAnnotation(FXMLComponent.class);
+		String annotationValue = annotationView != null ? annotationView.value() : annotationComponent.value();
+		
+		resource = getURLResource(annotationValue);
 	}
-
-	@Override
+	
+	/**
+	 * Get resource URL
+	 */
+	private URL getURLResource(String path) {
+		if (!path.startsWith("/")) {
+			path = "/" + path;
+		}
+		return getClass().getResource(path);
+	}
+	
 	public FXMLController getController() {
 		return controller;
 	}
 
-	@Override
 	public void setController(FXMLController controller) {
 		this.controller = controller;
 	}
 
-	@Override
 	public Node getRoot() {
 		return root;
 	}
 
-	@Override
 	public void setRoot(Node root) {
 		this.root = root;
 	}
