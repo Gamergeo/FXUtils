@@ -6,19 +6,17 @@ import java.net.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-import com.gamergeo.lib.gamlib.javafx.controller.FXMLController;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public abstract class AbstractFXMLView {
+public abstract class AbstractFXMLView<T> {
 	
 	@Autowired
 	ApplicationContext applicationContext;
 	
-	FXMLController controller;
+	T controller;
 	
 	Node root;
 	
@@ -27,7 +25,7 @@ public abstract class AbstractFXMLView {
 	/**
 	 * Load FXML File
 	 */
-	public AbstractFXMLView load() {
+	public AbstractFXMLView<T> load() {
 		log.info("Load FXML View: " + this.getClass());
         FXMLLoader loader = new FXMLLoader(resource);
         loader.setControllerFactory(applicationContext::getBean);
@@ -46,8 +44,9 @@ public abstract class AbstractFXMLView {
 	/**
 	 * Instantiates a new abstract fxml view.
 	 */
+	@SuppressWarnings("unchecked")
 	public AbstractFXMLView() {
-		final Class<? extends AbstractFXMLView> theClass = this.getClass();
+		final Class<? extends AbstractFXMLView<T>> theClass = (Class<? extends AbstractFXMLView<T>>) this.getClass();
 		
 		// On récupère la valeur de l'annotation, soit view soit component
 		FXMLView annotationView = theClass.getAnnotation(FXMLView.class);
@@ -67,11 +66,11 @@ public abstract class AbstractFXMLView {
 		return getClass().getResource(path);
 	}
 	
-	public FXMLController getController() {
+	public T getController() {
 		return controller;
 	}
 
-	public void setController(FXMLController controller) {
+	public void setController(T controller) {
 		this.controller = controller;
 	}
 
