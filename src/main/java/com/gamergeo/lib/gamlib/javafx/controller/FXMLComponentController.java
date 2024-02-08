@@ -1,4 +1,4 @@
-package com.gamergeo.lib.gamlib.javafx.controller;
+²package com.gamergeo.lib.gamlib.javafx.controller;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,4 +12,4 @@ import org.springframework.stereotype.Component;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public @interface FXMLComponentController {
 
-}
+}a
