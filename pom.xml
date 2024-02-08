@@ -3,7 +3,7 @@
 
 	<groupId>com.gamergeo.lib</groupId>
 	<artifactId>viewmodelfx</artifactId>
-	<version>0.7.2</version>
+	<version>0.7.3</version>
 	<packaging>jar</packaging>
 	
 	<parent>
@@ -49,10 +49,6 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
 		    <scope>provided</scope>
-		</dependency>
-		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
 </project>
