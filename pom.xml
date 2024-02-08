@@ -2,8 +2,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.gamergeo.lib</groupId>
-	<artifactId>gamlib</artifactId>
-	<version>0.3.2</version>
+	<artifactId>viewmodelfx</artifactId>
+	<version>0.7.2</version>
 	<packaging>jar</packaging>
 	
 	<parent>
@@ -11,52 +11,43 @@
 	    <artifactId>spring-boot-starter-parent</artifactId>
 	    <version>3.2.2</version>
 	</parent>
-	
-<!--	<modules>-->
-<!--		<module>gamlib-mapper</module>-->
-<!--	</modules>-->
   
 	<properties>
 		<java.version>21</java.version>
 	    <encoding>UTF-8</encoding>
     	<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
     	
-    	 <!-- Bom version -->
-    	<gambom.version>1.0</gambom.version>
+    	<!-- Dependency version -->
+		<javafx.version>21.0.1</javafx.version>
 	</properties>
-	
-	<dependencyManagement>
-		<dependencies>
-			<!-- Gamergeo BOM -->
-			<dependency>
-				<groupId>com.gamergeo.lib</groupId>
-				<artifactId>bom</artifactId>
-				<version>${gambom.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	
 	<dependencies>
 		<dependency>
 		    <groupId>org.openjfx</groupId>
 		    <artifactId>javafx-graphics</artifactId>
 		    <scope>provided</scope>
+		    <version>${javafx.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.openjfx</groupId>
 		    <artifactId>javafx-controls</artifactId>
 		    <scope>provided</scope>
+		    <version>${javafx.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.openjfx</groupId>
 		    <artifactId>javafx-fxml</artifactId>
 		    <scope>provided</scope>
+		    <version>${javafx.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
 		    <scope>provided</scope>
 		</dependency>
 		<dependency>
