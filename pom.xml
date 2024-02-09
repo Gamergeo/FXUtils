@@ -3,7 +3,7 @@
 
 	<groupId>com.gamergeo.lib</groupId>
 	<artifactId>fxutils</artifactId>
-	<version>0.7.3</version>
+	<version>0.8.1</version>
 	<packaging>jar</packaging>
 	
 	<parent>
@@ -19,7 +19,6 @@
     	
     	<!-- Dependency version -->
 		<javafx.version>21.0.1</javafx.version>
-    	<viewmodelfx.version>0.7.3</viewmodelfx.version>
     	<mvvmfx.version>1.8.0</mvvmfx.version>
 	</properties>
 	
